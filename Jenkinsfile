@@ -17,7 +17,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'vendor/bin/phing provision-stack'
+                sh 'vendor/bin/phing -Daws.region=us-east-1 provision-stack'
             }
         }
     }
