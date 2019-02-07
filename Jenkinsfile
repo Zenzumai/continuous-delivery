@@ -11,7 +11,7 @@ pipeline {
         }
         stage('testing') {
             steps {
-                sh 'vendor/bin/phpcs --report=checkstyle --standard=phpcs.xml --extensions=php,inc --ignore=autoload.php --ignore=vendor/'
+                sh 'vendor/bin/phpcs --report=checkstyle --standard=phpcs.xml --extensions=php,inc --ignore=autoload.php --ignore=vendor/ module/Application'
             }
         }
     }
