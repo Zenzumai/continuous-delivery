@@ -17,7 +17,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'aws deploy'
+                sh 'vendor/bin/phing provision-stack'
             }
         }
     }
