@@ -12,7 +12,7 @@ pipeline {
         stage('testing') {
             steps {
                 sh 'vendor/bin/phpcs --report=checkstyle --standard=phpcs.xml --extensions=php,inc --ignore=autoload.php --ignore=vendor/ module/Application'
-                sh 'vendor/bin/phpunit module/Application/tests'
+                sh 'vendor/bin/phpunit -c module/Application/tests'
             }
         }
         stage('deploy') {
