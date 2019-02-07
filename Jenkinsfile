@@ -2,20 +2,23 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                echo 'Building..'
+                sh 'php --version'
+                sh 'composer install'
+                sh 'vendor/bin/phing setup'
             }
         }
-        stage('Test') {
+        stage('testing') {
             steps {
-                echo 'Testing..'
+                sh 'vendor/bin/phpcs --report=checkstyle --standard=phpcs.xml --extensions=php,inc --ignore=autoload.php --ignore=vendor/ module/Application'
+                sh 'vendor/bin/phpunit -c module/Application/tests'
             }
         }
-        stage('Deploy') {
+        stage('deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'vendor/bin/phing -Daws.region=us-east-1 provision-stack'
             }
         }
     }
-}@
+}

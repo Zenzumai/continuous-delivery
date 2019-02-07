@@ -11,16 +11,14 @@
 
 namespace ApplicationTest\Service;
 
-use Application\Entity\Alien;
 use Application\Service\AlienNameGenerator;
 
 class AlienNameGeneratorTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testGetNameReturnsRightLenghtName()
+    public function testGetNameReturnsRightLengthName()
     {
         $service = new AlienNameGenerator();
-        $entity = new Alien();
 
         $this->assertRegExp("/^\S{8}$/", $service->getName(4));
     }
