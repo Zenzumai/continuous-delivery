@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'composer install'
             }
         }
         stage('Test') {
@@ -18,4 +19,4 @@ pipeline {
             }
         }
     }
-}@
+}
